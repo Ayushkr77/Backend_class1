@@ -28,4 +28,14 @@ app.post('/api/cars',(request,response)=> {
 })   
 
 
-// MongoDB: No-SQL DB. Data can be stored in the form of documents, key-value pairs, graphs, etc.
+// MongoDB: No-SQL DB. Data can be stored in the form of documents, key-value pairs, graphs, etc.  CRUD
+// Connecting express to mongodb i.e., server to db, we'll use mongoose
+// Mongoose is a popular Object Data Modeling (ODM) library for MongoDB and Node.js.
+
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost:27017/myDatabase',{  // connecting mongoose to the database named myDatabase and if there is no db named myDatabase then it will create
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})  // it is a promise so we are below using then catch
+.then(()=> {console.log("Connection successful");})
+.catch((err)=> {console.log("Received an error: ",err);}); 
